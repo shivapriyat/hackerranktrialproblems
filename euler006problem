@@ -1,0 +1,57 @@
+/*
+Project Euler #6: Sum square difference
+The sum of the squares of the first ten natural numbers is, . The square of the sum of the first ten natural numbers is, . Hence the absolute difference between the sum of the squares of the first ten natural numbers and the square of the sum is .
+
+Find the absolute difference between the sum of the squares of the first  natural numbers and the square of the sum.
+
+Input Format
+
+First line contains  that denotes the number of test cases. This is followed by  lines, each containing an integer, .
+
+Constraints
+
+Output Format
+
+Print the required answer for each test case.
+
+Sample Input 0
+
+2
+3
+10
+Sample Output 0
+
+22
+2640
+Explanation 0
+
+(1+2+3)^2 - (1^2+2^2+3^2)
+
+
+
+*/
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        long t = in.nextLong();
+        //System.out.println(t);
+        for(long a0 = 0; a0 < t; a0++){
+            long n = in.nextLong();
+             //System.out.println(n);
+            long sumOfN=n*(n+1)/2;
+            long sumOfNSquare=(long)sumOfN*sumOfN;
+            long sumofSquaresOfN=n*(n+1)*(2*n+1)/6;
+            System.out.println(sumOfNSquare - sumofSquaresOfN);
+        }
+    }
+}
+
