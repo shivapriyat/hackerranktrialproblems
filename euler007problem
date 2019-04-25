@@ -1,0 +1,46 @@
+/* get 10001 st prime*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        
+        Set<Integer> primeSet=generatePrimes(10000);
+        List<Integer> primeArr=new ArrayList<Integer>(primeSet);
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            if(n>primeArr.size()-1) {
+                primeSet=generatePrimes(n);
+                primeArr=new ArrayList<Integer>(primeSet);
+            }
+            System.out.println(primeArr.get(n-1));
+        }
+    }
+
+    private static Set<Integer> generatePrimes(int n) {
+        Set<Integer> primeArr=new TreeSet<Integer>();
+         int k=1;
+        
+         primeArr.add(2);k++;
+         for(int i=3;k<=n;i+=2) {
+             boolean isPrime=true;
+             for(int j=3;j<=i/2;j+=2) {
+                 if(i%j==0 && i!=j) {
+                     isPrime=false;
+                     break;
+                 }
+             }
+             if(isPrime==true) {
+                 primeArr.add(i);k++;
+             }
+         }
+        //System.out.println(primeArr.size());
+         return primeArr;
+    }
+}
