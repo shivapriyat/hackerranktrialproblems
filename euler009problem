@@ -1,0 +1,43 @@
+print abc where a2 +b2+c2 is pythagorean triplet and a+b+c=N
+c^2 = a^2 + b^2 c = n - a - b
+
+Substitute for C
+
+(n - a - b)^ 2 = a^2 + b^2
+
+Reduce
+
+0 = 2 a b - 2 a n - 2 b n + n^2
+
+Solve for b
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            int maxProd=-1;
+            for(int a=1;a<n/3;a++) {
+                int bdividend=n*(2*a-n);
+                int bdivisor=2*(a-n);
+                if(bdividend%bdivisor==0) {
+                    int b = bdividend/bdivisor;
+                    int c=n-a-b;
+                    if(a*b*c>maxProd) {
+                        maxProd=a*b*c;
+                    }
+                }
+            }
+            System.out.println(maxProd);
+        }
+    }
+}
+
