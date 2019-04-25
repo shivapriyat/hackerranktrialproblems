@@ -1,0 +1,76 @@
+//Project Euler #10: Summation of primes
+//The sum of the primes below 10  is 2+3+5+7=17.
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     *  Input: an integer n > 1.
+ 
+ Let A be an array of Boolean values, indexed by integers 2 to n,
+ initially all set to true.
+ 
+ for i = 2, 3, 4, ..., not exceeding sqrtn:
+   if A[i] is true:
+     for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n:
+       A[j] = false.
+ 
+ Output: all i such that A[i] is true.
+     */
+    public static List<Integer> generatePrimes(int n) {
+        
+        boolean primeArr[]=new boolean[n];
+        List<Integer> onlyprimes=new ArrayList<Integer>();
+        for(int i=2;i<n;i++) {
+            //System.out.println(i);
+            primeArr[i]=true;
+        }
+        for(int i=2;i<n;) {
+            if(primeArr[i]==true) {
+                onlyprimes.add(i);
+                for(int j=2*i;j<n;j+=i) {
+                    primeArr[j]=false;
+                }
+            }
+            if(i==2) {
+                i++;
+            }
+            else {
+                i+=2;
+            }
+        }
+        
+        /*for(long primeNum : onlyprimes) {
+            System.out.println(primeNum);
+        }
+        System.out.println("size:"+ onlyprimes.size());*/
+        return onlyprimes;
+        
+        
+        
+    }
+    public static void main(String[] args) {
+        List<Integer> primesList = generatePrimes(1000000);
+        Integer primes[]=new Integer[primesList.size()];
+        primesList.toArray(primes);
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for (int a0 = 0; a0 < t; a0++) {
+            int n = in.nextInt();
+            long sum=0;
+            for(int prime:primes) {
+                if(prime <= n) {
+                    sum+=prime;
+                }
+            }
+            System.out.println(sum);
+        }
+    }
+}
