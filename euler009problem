@@ -11,12 +11,6 @@ Reduce
 
 Solve for b
 
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
 public class Solution {
 
     public static void main(String[] args) {
@@ -25,13 +19,13 @@ public class Solution {
         for(int a0 = 0; a0 < t; a0++){
             int n = in.nextInt();
             int maxProd=-1;
-            for(int a=1;a<n/3;a++) {
+            for(int a=1;a<n;a++) {
                 int bdividend=n*(2*a-n);
                 int bdivisor=2*(a-n);
                 if(bdividend%bdivisor==0) {
                     int b = bdividend/bdivisor;
                     int c=n-a-b;
-                    if(a*b*c>maxProd) {
+                    if(a*b*c>maxProd  && a<b && b<c) {
                         maxProd=a*b*c;
                     }
                 }
