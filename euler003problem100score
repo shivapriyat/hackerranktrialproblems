@@ -1,0 +1,39 @@
+//Largest prime factor
+//chechk N=999966000557=19*52629789503 test case 5
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        if (t >= 1 && t <= 10) {
+            for (int a0 = 0; a0 < t; a0++) {
+                long n = in.nextLong();               
+                long maxprimeDivisor=1;
+                while(n%2==0) {
+                    
+                    maxprimeDivisor=2;
+                    n=n/2;
+                }
+                  for (long j = 3; j <= Math.sqrt(n);j+=2) {
+                    
+                    while(n%j==0) {
+                        
+                        maxprimeDivisor=j;
+                        n=n/j;
+                    }
+                
+            }
+                if(maxprimeDivisor==1 || n!=1) {
+                    maxprimeDivisor=n;
+                }
+                System.out.println(maxprimeDivisor);
+            }
+        }
+    }
+}
